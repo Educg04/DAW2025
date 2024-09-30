@@ -1,3 +1,11 @@
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
+.oferta_seccion {
+  margin-bottom: 30px;
+}
 
 button {
     margin: 10px;
@@ -16,16 +24,9 @@ button {
 }
 
 .oferta{
-    text-align: left;
+  text-align: left;
     
 }
-.material-symbols-outlined {
-  font-variation-settings:
-  'FILL' 0,
-  'wght' 400,
-  'GRAD' 0,
-  'opsz' 24
-}
 
 .material-symbols-outlined {
   font-variation-settings:
@@ -42,3 +43,12 @@ button {
   'GRAD' 0,
   'opsz' 24
 }
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+
