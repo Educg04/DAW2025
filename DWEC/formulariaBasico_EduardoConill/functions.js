@@ -5,7 +5,7 @@ window.onload = function () {
 
     inputs.forEach(input => {
         input.addEventListener('blur', () => validateField(input));
-        if (input.type === 'text' && input.placeholder !== '') {
+        if (input.type === 'text' ) {
             input.addEventListener('blur', () => input.value = input.value.toUpperCase());
         }
     });
@@ -51,6 +51,8 @@ window.onload = function () {
             input.classList.remove('error');
             input.placeholder = '';
             isValid = true;
+        } else if (input.value === '') {
+            input.classList.add('error');
         } else {
             input.classList.add('error');
             input.placeholder = errorMessage;
