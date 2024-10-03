@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Validación</title>
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+    <form id="formulario">
+        <label>Nombre:
+            <input type="text" id="nombre" placeholder="EDGAR">
+        </label>
+
+        <label>Apellido:
+            <input type="text" id="apellido" placeholder="NUÑEZ">
+        </label>
+
+        <label>Tipo de vía:
+            <select id="tipo-via">
+                <option value="Calle">Calle</option>
+                <option value="Avenida">Avenida</option>
+                <option value="Plaza">Plaza</option>
+            </select>
+        </label>
+
+        <label>Dirección:
+            <input type="text" id="direccion" placeholder="Dirección">
+        </label>
+
+        <label>Email:
+            <input type="email" id="email" placeholder="edinuñez@gmail.com">
+        </label>
+
+        <label>Teléfono:
+            <input type="number" id="telefono" placeholder="654232323">
+        </label>
+
+        <label>Edad:
+            <input type="number" id="edad" placeholder="Edad">
+        </label>
+
+        <label>DNI:
+            <input type="text" id="dni" placeholder="11111111N">
+        </label>
+
+        <button id="submit" disabled>Enviar</button>
+    </form>
+
+    <script src="functions.js"></script>
+</body>
+</html>
