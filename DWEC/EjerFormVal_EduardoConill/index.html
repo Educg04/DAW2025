@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Validación</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <form id="formulario">
+        <label>Nombre:
+            <input type="text" id="nombre" placeholder="EDUARDO">
+        </label>
+
+        <label>Apellido:
+            <input type="text" id="apellido" placeholder="CONILL">
+        </label>
+
+        <label>Tipo de vía:
+            <select id="tipo-via">
+                <option value="Calle">Calle</option>
+                <option value="Avenida">Avenida</option>
+                <option value="Plaza">Plaza</option>
+            </select>
+        </label>
+
+        <label>Dirección:
+            <input type="text" id="direccion" placeholder="Dirección">
+        </label>
+
+        <label>Email:
+            <input type="email" id="email" placeholder="educonill@gmail.com">
+        </label>
+
+        <label>Teléfono:
+            <input type="text" id="telefono" placeholder="654854119">
+        </label>
+
+        <label>Edad:
+            <input type="number" id="edad" placeholder="0-120">
+        </label>
+
+        <label>DNI:
+            <input type="text" id="dni" placeholder="12345678X">
+        </label>
+
+        <button id="submit" disabled>Enviar</button>
+    </form>
+
+    <script src="functions.js"></script>
+</body>
+</html>
