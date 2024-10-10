@@ -1,0 +1,54 @@
+body {
+    padding: 0px;
+    margin: 0px;
+}
+
+header {
+    margin-left: 0px;
+    border-bottom: 1px solid black;
+    margin-bottom: 100px;
+}
+
+header h1 {
+    margin-left: 50px;
+}
+
+.container {  display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "t_info precioFinal";
+  }
+  
+  .t_info { grid-area: t_info;
+    padding: 30px;
+}
+  
+  .precioFinal { grid-area: precioFinal; 
+    padding: 30px;
+}
+
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th {
+    text-align: center;
+    padding-bottom: 5px;
+    border-bottom: 1px solid black;
+}
+
+td {
+    padding: 40px;
+}
+
+.precioFinalContent{
+    background-color: rgb(185, 185, 185);
+}
+.titulo {
+    border-bottom: 0.5px solid black;
+}
