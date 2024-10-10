@@ -6,7 +6,7 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: #fafafa;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -26,14 +26,14 @@ label {
     margin-bottom: 5px;
     display: block;
     font-size: 14px;
-    color: #333;
+    color: #2b2b2b;
 }
 
 input, select {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
-    border: 1px solid #ddd;
+    border: 1px solid #ffffff;
     border-radius: 4px;
     font-size: 14px;
     transition: all 0.3s ease;
@@ -46,17 +46,17 @@ input:focus, select:focus {
 
 input.error {
     border-color: #ff4d4d;
-    background-color: #ffe6e6;
+    background-color: #ffffff;
 }
 
 input::placeholder {
-    color: #999;
+    color: #969696;
 }
 
 button {
     width: 100%;
     padding: 10px;
-    background-color: #ff0000;
+    background-color: #af189b;
     color: white;
     font-size: 16px;
     border: none;
@@ -81,17 +81,5 @@ button:hover.enabled {
     display: none;
 }
 
-input.error + .error-message {
-    display: block;
-}
 
-@media screen and (max-width: 400px) {
-    form {
-        width: 100%;
-        padding: 10px;
-    }
 
-    button {
-        font-size: 14px;
-    }
-}
