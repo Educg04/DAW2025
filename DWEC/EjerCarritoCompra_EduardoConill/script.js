@@ -39,7 +39,7 @@ sumar.addEventListener("click", botonSumar);
 restar.addEventListener("click", botonRestar);
 
 function insertarTabla() {
-    const listuca = carro.getListaProductos();
+    const listuca = carrito.getListaProductos();
     listuca.array.forEach(element => {
         /*<tr>
         <td>Ifhone 13 Pro</td>
@@ -51,7 +51,7 @@ function insertarTabla() {
         <td class="totalProd">0</td>
         </tr>
         */
-        cuerpoTabla.innerHTML
+        cuerpoTabla.innerText = 
        
     });
 }
