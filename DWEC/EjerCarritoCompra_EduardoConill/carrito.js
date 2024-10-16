@@ -1,13 +1,26 @@
-class carrito {
+
+export default class carrito {
 
     #total
     #listaProductos
+    #currency
 
-    constructor(listaProductos) {
+    constructor() {
         this.listaProductos = new Map();
         this.total = 0;
     }
 
+    setListaProductos (listaProductos) {
+        this.#listaProductos = listaProductos;
+    }
+
+    getListaProductos () {
+        return this.#listaProductos;
+    }
+
+    setCurrency (currency) {
+        this.#currency = currency;
+    }
     calculoTotalCarrito() {
     }
 
@@ -20,14 +33,9 @@ class carrito {
 
     obtenerCarrito(){
     }
+ 
 }
-   cargarProductos (json) {
-    listaProductos = productos.products;
-    currency = productos.currency;
-    console.log(listaProductos);
-   }
+   
 
-   fetch("http://jsonblob.com/1294296496458293248")
-    .then(response => response.json())
-    .finally(console.log("Se ha llamado a un servidor"))
-    .then(cargarProductos(response));
+
+    
