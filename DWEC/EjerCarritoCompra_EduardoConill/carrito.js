@@ -21,6 +21,19 @@ export default class carrito {
     setCurrency (currency) {
         this.#currency = currency;
     }
+
+    getCurrency () {
+        return this.#currency;
+    }
+
+    setTotal (total) {
+        this.#total = total;
+    }
+
+    getTotal () {
+        return this.#total;
+    }
+
     calculoTotalCarrito() {
     }
 

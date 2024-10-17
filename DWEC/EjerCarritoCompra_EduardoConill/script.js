@@ -51,7 +51,7 @@ function insertarTabla() {
         <td class="totalProd">0</td>
         </tr>
         */
-        cuerpoTabla.innerText = 
+        
        
     });
 }
