@@ -52,3 +52,11 @@ td {
 .titulo {
     border-bottom: 0.5px solid black;
 }
+
+.fila-of-product {
+    text-align: left;
+}
+
+.ProductoC {
+    text-align: left;
+}

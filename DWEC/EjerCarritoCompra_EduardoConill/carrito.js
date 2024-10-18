@@ -11,7 +11,10 @@ export default class carrito {
     }
 
     setListaProductos (listaProductos) {
-        this.#listaProductos = listaProductos;
+        this.#listaProductos = new Map();
+        listaProductos.forEach(producto => {
+            this.#listaProductos.set(producto.SKU,producto);
+        });
     }
 
     getListaProductos () {
@@ -38,7 +41,10 @@ export default class carrito {
     }
 
     actualizarUnidades(sku, lineaCompra){
+        this.#listaProductos[sku].quantity = 0
+        this.#listaProductos[sku].quantity = cantidad
 
+        
     }
 
     obtenerInforProd(sku){
