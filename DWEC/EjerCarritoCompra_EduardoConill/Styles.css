@@ -1,4 +1,4 @@
-body {
+/*body {
     padding: 0px;
     margin: 0px;
 }
@@ -49,7 +49,7 @@ td {
 .precioFinalContent{
     background-color: rgb(185, 185, 185);
 }
-.titulo {
+.pricePerProd {
     border-bottom: 0.5px solid black;
 }
 
@@ -59,4 +59,170 @@ td {
 
 .ProductoC {
     text-align: left;
+}
+
+.precio {
+    margin: 20px;
+    display:flex;
+    align-items: center;
+
+}
+
+.dinericoAPagar {
+    margin-left: 460.33px;
+}
+    */
+
+    /* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f4f4f9;
+    color: #333;
+    padding: 20px;
+}
+
+h1, h2 {
+    color: #fc6b5d;
+}
+
+/* Header */
+header {
+    background-color: #ff6f61;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    font-size: 24px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    color: white;
+}
+
+/* Product Table */
+.zonaProductos {
+    margin-top: 30px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #ff6f61;
+    color: white;
+}
+
+tr:hover {
+    background-color: #f9f9f9;
+}
+
+/* Quantity Buttons */
+.number {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    background-color: #ff6f61;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #ff3d2e;
+}
+
+input[type="number"] {
+    width: 50px;
+    padding: 5px;
+    margin: 0 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Total Price Section */
+.precioFinal {
+    text-align: right;
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+.precioFinal h2 {
+    font-size: 24px;
+}
+
+.dinericoAPagar {
+    font-size: 22px;
+    color: #ff6f61;
+    font-weight: bold;
+}
+
+.listaOfProdInCarr {
+    list-style: none;
+    margin-top: 10px;
+    padding-left: 0;
+    
+}
+
+.listaOfProdInCarr li {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #313131;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    td, th {
+        padding: 10px;
+        text-align: right;
+    }
+
+    td:before {
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    .number {
+        justify-content: space-between;
+    }
+
+    input[type="number"] {
+        width: 40px;
+    }
 }
