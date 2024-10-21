@@ -117,7 +117,6 @@ const carrochulito = new carrito();
                 valorContador++;
                 inputCantidad.value = valorContador;
                 valorTotalProduct.innerText = valorContador * parseFloat(valorUnidad.textContent.replace('€','', ';', ',', '.')).toFixed(2) + '€'
-                const lineaCompra 
                 carrochulito.actualizarUnidades(producto.SKU, valorContador);
             });
      
