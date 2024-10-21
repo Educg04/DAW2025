@@ -6,15 +6,12 @@ export default class carrito {
     #currency
 
     constructor() {
-        this.listaProductos = new Map();
-        this.total = 0;
+        this.#listaProductos = new Map();
+        this.#total = 0;
     }
 
     setListaProductos (listaProductos) {
-        this.#listaProductos = new Map();
-        listaProductos.forEach(producto => {
-            this.#listaProductos.set(producto.SKU,producto);
-        });
+        this.#listaProductos = listaProductos;
     }
 
     getListaProductos () {
@@ -38,19 +35,39 @@ export default class carrito {
     }
 
     calculoTotalCarrito() {
+        let totalCarrito = 0;
+        this.#listaProductos.forEach(producto => {
+            totalCarrito += parseInt(producto.quantity) * parseFloat(producto.price);
+        });
+        return totalCarrito.toFixed(2)
     }
 
     actualizarUnidades(sku, lineaCompra){
-        this.#listaProductos[sku].quantity = 0
-        this.#listaProductos[sku].quantity = cantidad
-
+        if (lineaCompra.quantity > 0) {
+            this.#listaProductos.set(sku, lineaCompra);  
+        } else {
+            this.#listaProductos.delete(sku);
+        }    
         
+        this.#total = this.calculoTotalCarrito();
     }
 
     obtenerInforProd(sku){
+        return this.#listaProductos.get(sku);
     }
 
-    obtenerCarrito(){
+    obtenerCarrito() {
+    // Convertir el Map a un array de pares clave-valor
+    const mapToArray = Array.from( this.#listaProductos);
+
+    // Convertir el array a JSON
+    const jsonString = JSON.stringify(mapToArray);
+        
+        return {
+            Total: this.#total,
+            currency: this.#currency,
+            products: jsonString,
+        };
     }
  
 }

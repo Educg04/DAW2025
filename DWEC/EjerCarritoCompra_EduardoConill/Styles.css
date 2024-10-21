@@ -1,62 +1,155 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 body {
-    padding: 0px;
-    margin: 0px;
+    background-color: #f4f4f9;
+    color: #333;
+    padding: 20px;
+}
+
+h1, h2 {
+    color: #fc6b5d;
 }
 
 header {
-    margin-left: 0px;
-    border-bottom: 1px solid black;
-    margin-bottom: 100px;
+    background-color: #ff6f61;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    font-size: 24px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 header h1 {
-    margin-left: 50px;
+    color: white;
 }
 
-.container {  display: grid;
-    grid-template-columns: 2fr 1fr;
-    grid-template-rows: 1fr;
-    gap: 0px 0px;
-    grid-auto-flow: row;
-    grid-template-areas:
-      "t_info precioFinal";
-  }
-  
-  .t_info { grid-area: t_info;
-    padding: 30px;
-}
-  
-  .precioFinal { grid-area: precioFinal; 
-    padding: 30px;
+.zonaProductos {
+    margin-top: 30px;
 }
 
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
 
 table {
-    border-collapse: collapse;
     width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
 }
 
 th {
+    background-color: #ff6f61;
+    color: white;
+}
+
+tr:hover {
+    background-color: #f9f9f9;
+}
+
+.number {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    background-color: #ff6f61;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #ff3d2e;
+}
+
+input[type="number"] {
+    width: 50px;
+    padding: 5px;
+    margin: 0 10px;
     text-align: center;
-    padding-bottom: 5px;
-    border-bottom: 1px solid black;
+    border: 1px solid #ddd;
+    border-radius: 5px;
 }
 
-td {
-    padding: 40px;
+.precioFinal {
+    text-align: right;
+    margin-top: 20px;
+    font-size: 18px;
 }
 
-.precioFinalContent{
-    background-color: rgb(185, 185, 185);
-}
-.titulo {
-    border-bottom: 0.5px solid black;
+.precioFinal h2 {
+    font-size: 24px;
 }
 
-.fila-of-product {
-    text-align: left;
+.dinericoAPagar {
+    font-size: 22px;
+    color: #ff6f61;
+    font-weight: bold;
 }
 
-.ProductoC {
-    text-align: left;
+.listaOfProdInCarr {
+    list-style: none;
+    margin-top: 10px;
+    padding-left: 0;
+    
+}
+
+.listaOfProdInCarr li {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #313131;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+
+@media (max-width: 768px) {
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    td, th {
+        padding: 10px;
+        text-align: right;
+    }
+
+    td:before {
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    .number {
+        justify-content: space-between;
+    }
+
+    input[type="number"] {
+        width: 40px;
+    }
 }

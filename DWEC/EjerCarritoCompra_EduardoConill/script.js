@@ -1,60 +1,15 @@
 import carrito from "./carrito.js";
+const listaProductosAlaVenta = new Map();
 
-const sumar = document.querySelector(".sumar");
-const restar = document.querySelector(".restar");
-const contador = document.querySelector(".contador");
-const total = document.querySelector(".totalProd");
-const unidad = document.querySelector(".valorUnidad");
+
 const cuerpoTabla = document.querySelector(".cuerpoTabla");
-
-let valorContador = 0;
-
-function botonSumar() {
-    valorContador++;
-    actualizarContador();
-    actualizarTotal();
-}
-
-function botonRestar() {
-    if (valorContador > 0) {
-        valorContador--;
-    }
-    actualizarContador();
-    actualizarTotal();
-}
-
-function actualizarContador() {
-    contador.value = valorContador;
-}
-
-function actualizarTotal() {
-    valorContador = contador.value;
-    total.innerHTML = (valorContador * parseFloat(unidad.textContent.replace('€','', ';', ',', '.'))).toFixed(2) + '€'
-}
-
-
-
-
-
- 
+const precioTotalCarrito = document.querySelector(".dinericoAPagar");
+const listaOfProdInCarr = document.querySelector(".listaOfProdInCarr");
 
 const carrochulito = new carrito();
 
     function insertarTabla() {
-       /* <tr>
-        <td>Ifhone 13 Pro</td>
-        <td>
-            <div class="number"><button class="restar" id="restar">-</button><input class="contador" id="contador"></input><button class="sumar" id="sumar">+</button>
-            </div>
-        </td>
-        <td class="valorUnidad">1.5 €  </td>
-        <td class="totalProd">0</td>
-        </tr>
-    */
-        const listucaProd = carrochulito.getListaProductos();
-    
-    
-        listucaProd.forEach((producto, SKU) => {
+        listaProductosAlaVenta.forEach((producto, SKU) => {
             let fila = document.createElement('tr');
             fila.classList.add('fila-of-product');
 
@@ -74,6 +29,7 @@ const carrochulito = new carrito();
             buttonMenos.classList.add('restar');
             buttonMenos.innerText = '-';
             const inputCantidad = document.createElement('input')
+            inputCantidad.type = "number";
             inputCantidad.classList.add('contador');
             inputCantidad.value = 0;
             const buttonMas = document.createElement('button');
@@ -83,7 +39,7 @@ const carrochulito = new carrito();
             //Creo columna de valor por unidad
             let celdaUnidad = document.createElement('td');
             let valorUnidad = document.createElement('p')
-            valorUnidad.innerText = producto.price + '€'
+            valorUnidad.innerText = producto.price + carrochulito.getCurrency();
             valorUnidad.classList.add('valorProducto');
 
 
@@ -118,34 +74,110 @@ const carrochulito = new carrito();
                 inputCantidad.value = valorContador;
                 valorTotalProduct.innerText = valorContador * parseFloat(valorUnidad.textContent.replace('€','', ';', ',', '.')).toFixed(2) + '€'
                 carrochulito.actualizarUnidades(producto.SKU, valorContador);
+                valorTotalProduct.innerText = (valorContador * parseFloat(valorUnidad.textContent.replace('€','', ';', ',', '.'))).toFixed(2) + carrochulito.getCurrency();
+        
+                producto.quantity = inputCantidad.value;
+                listaProductosAlaVenta.set(producto.SKU, producto);
+                carrochulito.actualizarUnidades(producto.SKU, listaProductosAlaVenta.get(producto.SKU));
+                console.log(carrochulito.getListaProductos());
+
+                console.log(carrochulito.getTotal());
+                actualizarTotalCarrito(producto.SKU);       
             });
      
             buttonMenos.addEventListener('click', function() {
                 let valorContador = parseInt(inputCantidad.value);
                 if (valorContador > 0) {
+
                     valorContador--;
-                }
-                inputCantidad.value = valorContador;
-                valorTotalProduct.innerText = valorContador * parseFloat(valorUnidad.textContent.replace('€','', ';', ',', '.')).toFixed(2) + '€'
+                    inputCantidad.value = valorContador;
+                    valorTotalProduct.innerText = valorContador * parseFloat(valorUnidad.textContent.replace('€','', ';', ',', '.')).toFixed(2) + carrochulito.getCurrency();
+                  
+                    producto.quantity = inputCantidad.value;
+                    listaProductosAlaVenta.set(producto.SKU, producto);
+                    carrochulito.actualizarUnidades(producto.SKU, listaProductosAlaVenta.get(producto.SKU));
+                    console.log(carrochulito.getListaProductos());
+                } 
+                actualizarTotalCarrito(producto.SKU);       
+
+                console.log(carrochulito.getTotal());
 
             });
 
             inputCantidad.addEventListener('blur', function() {
-                valorContador = inputCantidad.value;
-                valorTotalProduct.innerText = valorContador * parseFloat(valorUnidad.textContent.replace('€','', ';', ',', '.')).toFixed(2) + '€'
-            });
-    });
-    
-}
- 
-  function cargarProductos (json) {
-        carrochulito.setListaProductos(json.products);
-        carrochulito.setCurrency(json.currency);
-        console.log(carrochulito.getListaProductos());
+                let valorContador = parseInt(inputCantidad.value);
 
+                valorContador = inputCantidad.value;
+                valorTotalProduct.innerText = valorContador * parseFloat(valorUnidad.textContent.replace('€','', ';', ',', '.')).toFixed(2) + carrochulito.getCurrency();
+
+                producto.quantity = inputCantidad.value;
+                listaProductosAlaVenta.set(producto.SKU, producto);
+                carrochulito.actualizarUnidades(producto.SKU, listaProductosAlaVenta.get(producto.SKU));
+                console.log(carrochulito.getListaProductos());
+                    
+                if (valorContador < 0) {
+                    valorContador = 0;
+                    inputCantidad.value = valorContador;
+                    valorTotalProduct.innerText = valorContador * parseFloat(valorUnidad.textContent.replace('€','', ';', ',', '.')).toFixed(2) + carrochulito.getCurrency();
+                }
+
+                console.log(carrochulito.getTotal());
+                actualizarTotalCarrito(producto.SKU);       
+            });
+        });
+    }
+
+    function actualizarTotalCarrito(sku) {
+        let liDoesExist = false;
+        let lis = listaOfProdInCarr.querySelectorAll('li');
+        precioTotalCarrito.innerText = carrochulito.calculoTotalCarrito() + carrochulito.getCurrency();
+        let productoAPrintar = carrochulito.obtenerInforProd(sku);
+        let classofli;
+        lis.forEach(li => {
+
+            if (sku === li.classList.value) {
+                liDoesExist = true;
+                classofli = li.classList.value;
+            }
+        });
+
+        if (liDoesExist === true) {
+            const liAborrar = document.getElementById(sku);
+            console.log(liAborrar);
+
+            listaOfProdInCarr.removeChild(liAborrar);
+            let liAnadir = document.createElement('li');
+            liAnadir.classList.add(productoAPrintar.SKU);
+            liAnadir.id = productoAPrintar.SKU;
+
+            liAnadir.innerText = productoAPrintar.quantity + " x " + productoAPrintar.title +  " => " + (productoAPrintar.quantity * parseFloat(productoAPrintar.price)).toFixed(2) + carrochulito.getCurrency();
+            listaOfProdInCarr.appendChild(liAnadir);
+        }
+        else if (productoAPrintar.quantity > 0) {
+            let liAnadir = document.createElement('li');
+            liAnadir.classList.add(productoAPrintar.SKU);
+            liAnadir.id = productoAPrintar.SKU;
+
+            liAnadir.innerText = productoAPrintar.quantity + " x " + productoAPrintar.title + " => " + (productoAPrintar.quantity * parseFloat(productoAPrintar.price)).toFixed(2) + carrochulito.getCurrency();
+            listaOfProdInCarr.appendChild(liAnadir);
+        } 
+    }
+
+    function setListaProductosAlaVenta (listaDeProductos) {
+        listaDeProductos.forEach(producto => {
+            listaProductosAlaVenta.set(producto.SKU,producto);
+        });
+    }
+ 
+    function cargarProductos (json) {
+        setListaProductosAlaVenta(json.products);
+        carrochulito.setCurrency(json.currency);
+        carrochulito.setListaProductos(new Map());
+        console.log(listaProductosAlaVenta);
+        console.log(carrochulito.getListaProductos());
     }
     
-    fetch('http://jsonblob.com/api/jsonBlob/1296836936260771840')
+    fetch('http://jsonblob.com/api/1297294588556206080')
     .then((resp) => resp.json())
     .then(function(data) {
         console.log(data)
