@@ -57,10 +57,8 @@ export default class carrito {
     }
 
     obtenerCarrito() {
-    // Convertir el Map a un array de pares clave-valor
     const mapToArray = Array.from( this.#listaProductos);
 
-    // Convertir el array a JSON
     const jsonString = JSON.stringify(mapToArray);
         
         return {
@@ -68,7 +66,7 @@ export default class carrito {
             currency: this.#currency,
             products: jsonString,
         };
-    }
+    } 
  
 }
    
