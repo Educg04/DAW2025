@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8"> <!-- Configuración de caracteres UTF-8 para admitir caracteres especiales. -->
+    <title>Log In</title> <!-- Título de la página, aparece en la pestaña del navegador. -->
+    <link rel="stylesheet" href="css/style.css"> <!-- Enlace al archivo CSS externo para estilos. -->
+</head>
+<body>
+    <!-- Encabezado principal con el logotipo -->
+    <header class="header">
+        <a href="index.html"> <!-- Enlace que redirige a la página principal (index.html). -->
+            <img class="header__logo" src="img/logo.png" alt="Logotipo"> <!-- Logotipo de la página. -->
+        </a>
+    </header>
+
+    <!-- Contenido principal -->
+    <main class="contenedor">
+        <h1>Iniciar Sesión</h1> <!-- Título principal del formulario de inicio de sesión. -->
+
+        <!-- Formulario para el inicio de sesión -->
+        <form class="formulario">
+            <!-- Grupo de formulario para el campo del usuario -->
+            <div class="formulario__grupo">
+                <label for="usuario" class="formulario__label">Usuario o Correo Electronico</label> <!-- Etiqueta para el campo de usuario. -->
+                <input type="text" id="usuario" name="usuario" class="formulario__input" placeholder="Ingresa tu usuario o Correo Electronico" required> 
+                <!-- Campo de texto para ingresar el nombre de usuario. Incluye un atributo "placeholder" y "required" para validación. -->
+            </div>
+
+            <!-- Grupo de formulario para el campo de contraseña -->
+            <div class="formulario__grupo">
+                <label for="password" class="formulario__label">Contraseña</label> <!-- Etiqueta para el campo de contraseña. -->
+                <div class="formulario__password">
+                    <input type="password" id="password" name="password" class="formulario__input" placeholder="Ingresa tu contraseña" required> 
+                    <!-- Campo de texto tipo "password" para la contraseña. El atributo "required" obliga a que se complete. -->
+                    <button type="button" id="mostrar-password" class="formulario__mostrar">👁️</button> 
+                    <!-- Botón para alternar la visibilidad de la contraseña, representado por un ícono de ojo. -->
+                </div>
+            </div>
+
+            <!-- Botón para enviar el formulario -->
+            <button class="formulario__boton">Ingresar</button> <!-- Botón de tipo submit para iniciar sesión. -->
+        </form>
+
+    </main>
+
+    <!-- Pie de página -->
+    <footer class="footer">
+        <p class="footer__texto">&copy;Todos los derechos Reservados 2024.</p> <!-- Mensaje de derechos reservados. -->
+    </footer>
+
+    <!-- Enlace al archivo JavaScript para funcionalidad adicional -->
+    <script src="functions.js"></script> <!-- Archivo que contiene las funciones, como la de mostrar contraseña. -->
+</body>
+</html>
