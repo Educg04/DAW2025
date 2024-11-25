@@ -1,0 +1,220 @@
+/* Base */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #1e1e2f; /* Fondo oscuro */
+    margin: 0;
+    padding: 0;
+    color: #f0f0f0; /* Texto más claro */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* Contenedor Principal */
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 40px;
+    max-width: calc(100% - 80px);
+    width: 100%;
+    position: relative;
+    background: linear-gradient(135deg, #4e0268, #ff4c93);
+    border-radius: 30px;
+    box-shadow: 0 15px 60px rgba(0, 0, 0, 0.3);
+    overflow-x: hidden; /* Evitar scroll horizontal */
+}
+
+/* Fondo Difuso */
+.container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('https://source.unsplash.com/random/1500x1500') no-repeat center center/cover;
+    filter: blur(10px) brightness(0.5);
+    z-index: -1;
+    border-radius: 30px;
+}
+
+/* Sección de Productos */
+.a1 {
+    flex: 3;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.08); /* Fondo translúcido */
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    color: #fff;
+}
+
+/* Tabla de Productos */
+.titulosTabla h2 {
+    font-size: 1.5em;
+    color: #f4f4f4; /* Texto claro */
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #ff4c93; /* Línea decorativa */
+}
+
+.productoX {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.productoX:hover {
+    background-color: #ff4c93;
+    transform: scale(1.05);
+    color: #fff;
+}
+
+.productosStyle p {
+    margin: 0;
+    font-size: 1.1em;
+}
+
+/* Botones */
+button {
+    background: #ff4c93;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+    background-color: #4e0268;
+    transform: translateY(-2px);
+}
+
+input {
+    width: 70px;
+    text-align: center;
+    background-color: #2d2d3d;
+    color: #fff;
+    border: 2px solid #ff4c93;
+    padding: 10px;
+    font-size: 1em;
+    border-radius: 5px;
+}
+
+input:focus {
+    outline: none;
+    background-color: #4e0268;
+    color: #fff;
+}
+
+/* Sección de Cesta */
+.a2 {
+    flex: 1;
+    max-width: 350px;
+    min-width: 300px;
+    background-color: rgba(255, 255, 255, 0.08);
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    color: #fff;
+    overflow: auto;
+}
+
+.a2 h3 {
+    font-size: 1.5em;
+    color: #f4f4f4;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #ff4c93;
+    padding-bottom: 5px;
+}
+
+.cestita {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 15px 0;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.cestita:hover {
+    background-color: #ff4c93;
+    transform: scale(1.05);
+    color: #fff;
+}
+
+.cestita .b1,
+.cestita .b2 {
+    font-size: 1.2em;
+}
+
+/* Total */
+.a2 h3 strong {
+    color: #ff4c93;
+}
+
+/* Línea divisoria */
+hr {
+    border: 0;
+    height: 1px;
+    background: #ff4c93;
+    margin: 20px 0;
+}
+
+/* Botón de Finalizar */
+.finalizarCompra {
+    display: block;
+    width: 100%;
+    background: #ff4c93;
+    color: white;
+    padding: 15px;
+    font-size: 1.2em;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.finalizarCompra:hover {
+    background-color: #4e0268;
+    transform: scale(1.1);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .a1,
+    .a2 {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .a2 {
+        max-width: none;
+    }
+}
+
+.titulosTabla{
+    display: grid;
+    grid-template-columns: 2fr 2fr 2fr 1fr;
+  }

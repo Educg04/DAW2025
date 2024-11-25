@@ -1,0 +1,76 @@
+<body>
+    <div class="container">
+
+        <div class="a1">
+
+            <div class ="titulosTabla">
+                <td>
+                    <h2>Titulo</h2>
+                </td>
+                <td>
+                    <h2>Cantidad</h2>
+                </td>
+                <td>
+                    <h2>Precio</h2>
+                </td>
+                <td>
+                    <h2>Total</h2>
+                </td>
+            </div>
+
+            @for(prod of arrayprod; track prod.id){
+                <div class="productoX" >
+                    <td class="productosStyle">
+                            <p><strong>{{prod.title}}</strong></p>
+                            <p>{{prod.SKU}}</p>
+                    </td>
+                
+                    <td class="cantidadClass">
+                        <button (click)="bajarContador(prod)">-</button>
+                        <input type="text" [value]="prod.cantidad || ''" readonly>
+                        <button (click)="subirContador(prod)">+</button>
+                    </td>
+                              
+                    <td class="precioClass">
+                            <p id="precioP">{{prod.price}}</p>
+                    </td>
+
+                    <td class="totalClass">
+                        <p>{{ calcularTotal(prod) }}</p>
+                    </td>
+                </div>
+
+            }@empty{
+                <li>No hay productos en la lista</li>
+            }
+        </div>
+
+        <div class="a2">
+            <h3>Cesta de compra</h3>
+
+            <div>
+              @for(prod of cestucaList; track prod.id) {
+                <div class="cestita">
+                    <div class="b1">
+                        <strong>{{prod.cantidad}}</strong>
+                    <strong>{{ prod.title }}</strong>: 
+                    </div>
+                    <div class = "b2">
+                    {{ (prod.price * prod.cantidad).toFixed(2) }} {{ currency }}
+                    </div> 
+                </div>
+              }
+              @empty {
+                <p>No hay productos en la cesta.</p>
+              }
+            </div>
+
+            <hr />
+            
+            <h3>
+              <strong>TOTAL:</strong>
+              {{ calcularTotalCesta().toFixed(2) }} {{ currency }}
+            </h3>
+          </div>
+    </div>
+</body>
